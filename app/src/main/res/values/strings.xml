@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application1</string>
+    <string-array name="TypeForfait">
+        <item></item> //le premier est vide pour ne pas qu'une des 4 soit selectionnée automatiquement
+        <item>Forfait etape</item>
+        <item>Frais KM</item>
+        <item>Nuitee hotel</item>
+        <item>Repas restaurant</item>
+    </string-array>
+</resources>
