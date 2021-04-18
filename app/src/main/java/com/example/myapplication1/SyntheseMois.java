@@ -28,6 +28,9 @@ public class SyntheseMois extends AppCompatActivity {
         setContentView(R.layout.activity_synthese_mois);
         db = new SQLHelper(this);
         db.open();
+
+
+
         displayListView();
     }
 
@@ -71,23 +74,30 @@ public class SyntheseMois extends AppCompatActivity {
         listView.setAdapter(dataAdapter);
 
 
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Pour que l'id du frais s'affiche quand on clique dessus, et pour supprimer le fraids
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> listView, View view,
                                     int position, long id) {
                 // On obtient le curseur, positionne sur la ligne correspondante dans le jeu de résultats
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
-                // On obtient la capitale du pays en cliquant sur le pays
-                String countryCode =
-                        cursor.getString(cursor.getColumnIndexOrThrow("libelle"));
+                // On obtient l'id du frais en cliquant sur le frais
+                String myId =
+                        cursor.getString(cursor.getColumnIndexOrThrow("idFrais"));
                 Toast.makeText(getApplicationContext(),
-                        countryCode, Toast.LENGTH_SHORT).show();
+                        myId, Toast.LENGTH_SHORT).show();
 
             }
-        });*/
+        });
+        //relier a l id et utiliser les fonctions de suppression de la bdd pr supprimer
+
     }
 
+    //fonction pour supprimer un frais, à relier avec la poubelle de la list view
+    public void doDeleteOnClick(View v) {
+        Toast.makeText(v.getContext(),"You clicked the DELETE button for id " + ((String) v.getTag()), Toast.LENGTH_SHORT).show();
+    }
 
     public void clique_retour(View view) {
         finish();
