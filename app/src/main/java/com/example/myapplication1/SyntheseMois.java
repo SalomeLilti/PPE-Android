@@ -16,11 +16,11 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static java.lang.Integer.parseInt;
+
 public class SyntheseMois extends AppCompatActivity {
     private SimpleCursorAdapter dataAdapter;
     private SQLHelper db;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,6 @@ public class SyntheseMois extends AppCompatActivity {
         setContentView(R.layout.activity_synthese_mois);
         db = new SQLHelper(this);
         db.open();
-
-
 
         displayListView();
     }
@@ -57,10 +55,10 @@ public class SyntheseMois extends AppCompatActivity {
                 R.id.datefrais,
                 R.id.dateActu,
                 R.id.txtQte,
-                R.id.idFrais,
+                R.id.idFrais
 
         };
-        //On créer l'adaptateur à l'aide du curseur pointant sur les données souhaitées
+        //On crée l'adaptateur à l'aide du curseur pointant sur les données souhaitées
         // ainsi que les informations de mise en page
         dataAdapter = new SimpleCursorAdapter(
                 this, R.layout.frais_infos,
@@ -73,7 +71,6 @@ public class SyntheseMois extends AppCompatActivity {
         // Attribuer l’adapter au ListView
         listView.setAdapter(dataAdapter);
 
-
         //Pour que l'id du frais s'affiche quand on clique dessus, et pour supprimer le fraids
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,21 +79,12 @@ public class SyntheseMois extends AppCompatActivity {
                 // On obtient le curseur, positionne sur la ligne correspondante dans le jeu de résultats
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
-                // On obtient l'id du frais en cliquant sur le frais
-                String myId =
-                        cursor.getString(cursor.getColumnIndexOrThrow("idFrais"));
-                Toast.makeText(getApplicationContext(),
-                        myId, Toast.LENGTH_SHORT).show();
-
+                //On obtient l'id du frais en cliquant sur le frais
+                String myId = cursor.getString(cursor.getColumnIndexOrThrow("ID"));
+                Toast.makeText(getApplicationContext(), myId, Toast.LENGTH_SHORT).show();
+                db.deleteData (parseInt (myId));
             }
         });
-        //relier a l id et utiliser les fonctions de suppression de la bdd pr supprimer
-
-    }
-
-    //fonction pour supprimer un frais, à relier avec la poubelle de la list view
-    public void doDeleteOnClick(View v) {
-        Toast.makeText(v.getContext(),"You clicked the DELETE button for id " + ((String) v.getTag()), Toast.LENGTH_SHORT).show();
     }
 
     public void clique_retour(View view) {

@@ -22,7 +22,7 @@ android:padding="6dip" >
     android:layout_below="@+id/textView1"
     android:layout_alignLeft="@+id/textView1"
     android:text="Libelle: "
-    android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 <TextView
     android:id="@+id/textView3"
@@ -31,9 +31,10 @@ android:padding="6dip" >
     android:layout_below="@+id/textView2"
     android:layout_alignLeft="@+id/textView2"
     android:text="Quantite: "
-    android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-<TextView
+
+    <TextView
     android:id="@+id/textView4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -50,6 +51,8 @@ android:padding="6dip" >
     android:layout_alignLeft="@+id/textView4"
     android:text="Date: "
     android:textAppearance="?android:attr/textAppearanceMedium" />
+    //android:visibility="@{null ? invisible : visible}"
+
 
 <TextView
     android:id="@+id/textView6"
@@ -123,15 +126,14 @@ android:padding="6dip" >
     android:text="TextView" />
 
 
-    <ImageButton
+    <ImageView
         android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="43dp"
+        android:layout_height="47dp"
         android:layout_alignLeft="@+id/dateActu"
-        android:layout_marginLeft="38dp"
+        android:layout_marginLeft="142dp"
         android:layout_weight="1"
         android:baselineAlignBottom="false"
-        android:onClick="doDeleteOnClick"
         app:srcCompat="@android:drawable/ic_menu_delete" />
 
 

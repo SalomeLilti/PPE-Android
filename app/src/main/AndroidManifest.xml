@@ -20,9 +20,7 @@
 
         <activity android:name=".FraisForfait"></activity>
         <activity android:name=".FraisHorsForfait"></activity>
-        <activity android:name=".Parametres"></activity>
         <activity android:name=".SyntheseMois"></activity>
-        <activity android:name=".EnvoiDonnees"></activity>
 
 
     </application>

@@ -17,6 +17,10 @@ public class FraisHorsForfait extends MainActivity {
     EditText montant;
     TextView date;
     SQLHelper database; //variable qui permet d'accéder à la classe SQLHelper pr pouvoir accéder à ses méthodes.
+    Calendar calendrier = Calendar.getInstance(); //on declare une classe d'un calendrier qui existe deja
+    int jj=calendrier.get(Calendar.DAY_OF_MONTH);
+    int mm=calendrier.get(Calendar.MONTH);
+    int aaaa=calendrier.get(Calendar.YEAR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +48,8 @@ public class FraisHorsForfait extends MainActivity {
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                     }
-                }, 2020, 12, 27);
+                }, aaaa, mm, jj);
         picker.show();
-        Calendar calendrier = Calendar.getInstance(); //on declare une classe d'un calendrier qui existe deja
     }
 
     public void monClick(View view){

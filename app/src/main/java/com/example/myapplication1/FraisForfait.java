@@ -84,7 +84,7 @@ public class FraisForfait extends MainActivity {
                     int posForfait = listeForfait1.getSelectedItemPosition();
                     montantCalcule = quantite * FraisAuForfait[posForfait];
                     if (database.insertData(forfait, quantite, null, montantCalcule, null)) {
-                        afficherMessage("Succès", "Valeur ajoutée. " + "Montant= " + montantCalcule);
+                        afficherMessage("Succes", "Valeur ajoutée. " + "Montant= " + montantCalcule);
                         return;
                     }
                 }

@@ -38,7 +38,8 @@
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date d'aujourd'hui:" />
+            android:text="Date d'aujourd'hui:"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/dateActu"
@@ -60,7 +61,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Id:" />
+            android:text="Id:"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/idFrais"

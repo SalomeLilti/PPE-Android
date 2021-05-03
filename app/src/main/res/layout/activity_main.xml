@@ -60,18 +60,5 @@
         android:onClick="onClick"
         android:text="SYNTHESE DU MOIS" />
 
-    <Button
-        android:id="@+id/btnenvoi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="ENVOI DES DONNEES" />
-
-    <Button
-        android:id="@+id/btnparametres"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="PARAMETRES" />
 
 </LinearLayout>

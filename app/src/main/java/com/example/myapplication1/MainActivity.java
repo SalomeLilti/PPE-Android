@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     public void onClick (View view) {
         if (view.getId() == R.id.btnfraisforfait){
             Intent intent = new Intent(getApplicationContext(), FraisForfait.class); //intent est une variable de type intent(classe) pr faire passer d'1 classe à l'autre
@@ -26,15 +25,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        if (view.getId() == R.id.btnenvoi){
-            Intent intent = new Intent(getApplicationContext(), EnvoiDonnees.class);
-            startActivity(intent);
-        }
-
-        if (view.getId() == R.id.btnparametres){
-            Intent intent = new Intent(getApplicationContext(), Parametres.class);
-            startActivity(intent);
-        }
 
         if (view.getId() == R.id.btnsynthese){
             Intent intent = new Intent(getApplicationContext(), SyntheseMois.class);
