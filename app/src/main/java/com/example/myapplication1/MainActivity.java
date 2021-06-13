@@ -14,9 +14,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * Execute l'action des différents boutons de la page d'accueil
+     * @param view
+     */
     public void onClick (View view) {
         if (view.getId() == R.id.btnfraisforfait){
-            Intent intent = new Intent(getApplicationContext(), FraisForfait.class); //intent est une variable de type intent(classe) pr faire passer d'1 classe à l'autre
+            Intent intent = new Intent(getApplicationContext(), FraisForfait.class); //intent est une variable
+            // de type intent(classe) pr faire passer d'1 classe à l'autre
             startActivity(intent);
         }
 
@@ -33,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //je cree la methode qui affiche un msg
+    /**
+     * Affiche un message comportant un titre et un contenu,  via une boite de dialogue
+     * @param titre
+     * @param message
+     */
     public void afficherMessage(String titre, String message){
         AlertDialog.Builder builder=new AlertDialog.Builder(this); //classe qui constuit une boite de dialogue
         builder.setCancelable(true); //pr que la boite de dialogue soit refermable

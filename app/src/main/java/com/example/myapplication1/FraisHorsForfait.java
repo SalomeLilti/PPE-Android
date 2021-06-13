@@ -29,7 +29,10 @@ public class FraisHorsForfait extends MainActivity {
         database=new SQLHelper(this); //j'instancie la classe SQLHelper avec la variable database
         init();
     }
-    //methode qui permet de relier les boutons avec leur objet graphique
+
+    /**
+     * Permet de relier les boutons avec leur objet graphique
+     */
     public void init(){
         btnAjouter=findViewById(R.id.btnAjouter);
         btnModifier=findViewById(R.id.btnModifier);
@@ -40,6 +43,10 @@ public class FraisHorsForfait extends MainActivity {
         DatePickerDialog picker;
     }
 
+    /**
+     * Affiche un calendrier avec les dates à jour
+     * @param vv
+     */
     public void ShowCal(View vv)
     {
         DatePickerDialog picker = new DatePickerDialog(FraisHorsForfait.this,
@@ -52,23 +59,33 @@ public class FraisHorsForfait extends MainActivity {
         picker.show();
     }
 
+    /**
+     * Ajoute le libelle, la date et le montant d'un frais hors forfait
+     * @param view
+     */
     public void monClick(View view){
         switch (view.getId()){
             case R.id.btnAjouter:
                 String libelle1= libelle.getText().toString();
-                double montant1 = Double.parseDouble(montant.getText().toString());//conversion d'un text en string et d'un string en double
+                double montant1 = Double.parseDouble(montant.getText().toString());//conversion d'un text
+                // en string et d'un string en double
                 String date1=date.getText().toString();
-                if(libelle1.trim().length()==0 || montant1==0 || date1.length()==0) { //test si les champs libelle, montant et date sont renseignes
-                    afficherMessage("Erreur!", "Champs vides");
+                if(libelle1.trim().length()==0 || montant1==0 || date1.length()==0) { //test si les champs
+                    // libelle, montant et date sont renseignes
+                    afficherMessage("Erreur!", "Champs vides.");
                     return;
                 } else{
                     database.insertData(null, null, date1, montant1, libelle1);
-                    afficherMessage("Succes!", "Informations ajoutées");
+                    afficherMessage("Succès!", "Informations ajoutées.");
                     return;
                 }
         }
     }
 
+    /**
+     * Permet le retour à la page précédente
+     * @param view
+     */
     public void clique_retour(View view) {
         finish();
     }

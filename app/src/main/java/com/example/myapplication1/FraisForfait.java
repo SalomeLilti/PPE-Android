@@ -17,7 +17,8 @@ public class FraisForfait extends MainActivity {
     EditText txtQte1;
     Spinner listeForfait1;
     Button btnAjouter1;
-    SQLHelper database; //variable qui permet d'acceder à la classe sqlhelperfraisforfait pr pouvoir acceder a ses methodes
+    SQLHelper database; //variable qui permet d'acceder à la classe sqlhelperfraisforfait
+    // pr pouvoir acceder a ses methodes
     //declaration d'un tableau avec les montants des frais au forfait
     Double[] FraisAuForfait=new Double [] {0.0, 110.0, 0.62, 80.0, 25.0};
     TextView maDate;
@@ -30,20 +31,21 @@ public class FraisForfait extends MainActivity {
     int aaaa=calendrier.get(Calendar.YEAR);
     double montantCalcule;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frais_forfait);
         //on appelle la methode init
         init();
-        //on initialise la variable database en instanciant la classe sqlhelperfraisforfait
+        //on initialise la variable database en instanciant la classe SQLHelper
         database= new SQLHelper(this);
 
     }
 
     /**
-     * methode qui va initialiser les variables pr les relier aux objets graphiques correspondants
-     */
+     * Initialise les variables pr les relier aux objets graphiques correspondants
+     **/
     public void init(){
         txtQte1=findViewById(R.id.txtQte);
         listeForfait1=findViewById(R.id.listeForfait);
@@ -53,26 +55,39 @@ public class FraisForfait extends MainActivity {
         dateActu=findViewById(R.id.dateActu);
     }
 
+    /**
+     * Affiche le calendrier comportant les dates mises à jour
+     * @param vv
+     */
     public void ShowCal(View vv)
     {
         picker = new DatePickerDialog(FraisForfait.this,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        maDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);//date qu'on recupere une fois qu'on a selectionne
+                        maDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                        //date qu'on recupere une fois qu'on a selectionne
                     }
                 },aaaa, mm, jj);//date qui s'affiche sur le calendrier
         picker.show();
     }
 
+    /**
+     * Effectue l'action du bouton ajouter, cad vérifie que les champs soient renseiegnés et valides
+     * et enregistre le frais dans la bdd en affichant un message de confirmation
+     * @param v
+     */
     public void MonClick(View v ) {
         switch (v.getId()) {
             case R.id.btnAjouter:
                 if (txtQte1.getText().toString().trim().length() == 0 || listeForfait1.getSelectedItem().toString().length() == 0
-                        || maDate.getText().toString().trim().length()==0) { //teste si le champ quantite est renseigné ou si le champ type n'est pas vide et qu'on a selectionne l'une des 4 possibilités
+                        || maDate.getText().toString().trim().length()==0) {
+                    //teste si le champ quantite est renseigné ou si le champ type n'est pas vide
+                    // et qu'on a selectionne l'une des 4 possibilités et si la date est renseignée
                     afficherMessage("Erreur!", "Champ vide");
                     return;
-                } else if (maDate.getText().toString().trim().length()>10 || maDate.getText().toString().trim().length()<8 ) {  //test sur la validité du champ date
+                } else if (maDate.getText().toString().trim().length()>10 || maDate.getText().toString().trim().length()<8 ) {
+                    //test sur la validité du champ date
                     afficherMessage("Erreur!", "Date invalide");
                     return;
                     } else if (Integer.parseInt(txtQte1.getText().toString())<1){ //teste si la quantite est au moins 1
@@ -84,18 +99,18 @@ public class FraisForfait extends MainActivity {
                     int posForfait = listeForfait1.getSelectedItemPosition();
                     montantCalcule = quantite * FraisAuForfait[posForfait];
                     if (database.insertData(forfait, quantite, null, montantCalcule, null)) {
-                        afficherMessage("Succes", "Valeur ajoutée. " + "Montant= " + montantCalcule);
+                        afficherMessage("Succès", "Valeur ajoutée. " + "Montant= " + montantCalcule);
                         return;
                     }
                 }
                 break;
         }
-
-
     }
 
-
-
+    /**
+     * Finit l'action en cours, donc retourne à l'action précédente
+     * @param view
+     */
     public void clique_retour(View view) {
         finish();
     }
@@ -104,6 +119,4 @@ public class FraisForfait extends MainActivity {
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-
-
 }

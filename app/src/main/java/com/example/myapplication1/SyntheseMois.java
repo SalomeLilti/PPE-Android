@@ -26,13 +26,16 @@ public class SyntheseMois extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synthese_mois);
+        //j'instancie la classe SQLHelper avec la variable db
         db = new SQLHelper(this);
         db.open();
 
         displayListView();
     }
 
-    //Fonction qui permet de remplir le ListView
+    /**
+     * Permet de remplir le list view des frais
+     */
     private void displayListView() {
 
         Cursor cursor = db.fetchAllFrais();
@@ -71,7 +74,7 @@ public class SyntheseMois extends AppCompatActivity {
         // Attribuer l’adapter au ListView
         listView.setAdapter(dataAdapter);
 
-        //Pour que l'id du frais s'affiche quand on clique dessus, et pour supprimer le fraids
+        //Pour que l'id du frais s'affiche quand on clique dessus, et pour supprimer le frais
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> listView, View view,
